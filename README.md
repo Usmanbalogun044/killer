@@ -1,95 +1,87 @@
-# Killer Organisation - Enterprise Stress Tool
+# ☠️ KILLER ☠️
 
-> [!CAUTION] > **DISCLAIMER: THIS TOOL IS FOR EDUCATIONAL PURPOSES ONLY.**
->
-> This software is intended to demonstrate how Denial of Service (DoS) attacks work conceptually and to help understand network security and stress testing.
->
-> **DO NOT** use this tool against any system, network, or website that you do not own or have explicit permission to test. Unauthorized use of this tool is illegal and unethical. The author accepts no responsibility for any misuse of this code.
+```
+  _  __  ___   _       _       ______   _____
+ | |/ / |_ _| | |     | |     |  ____| |  __ \
+ | ' /   | |  | |     | |     | |__    | |__) |
+ |  <    | |  | |     | |     |  __|   |  _  /
+ | . \  _| |_ | |____ | |____ | |____  | | \ \
+ |_|\_\|_____||______||______||______| |_|  \_\
 
-## Overview
+      >>> HIGH-PERFORMANCE HTTPS STRESSER <<<
+           >>> CODED BY DOLLARHUNTER <<<
+```
 
-This is an **Enterprise-Grade Stress Tool** developed by **Killer Organisation**. It is designed for professional load testing and security auditing, providing detailed insights into server performance under high stress.
+**Killer** is a lethal, high-performance HTTPS stress testing tool. It floods targets with a tsunami of requests, testing the absolute limits of their resilience.
 
-**Key Features:**
+> [!CAUTION] > **⚠️ WARNING: AUTHORIZED USE ONLY ⚠️**
+> This tool is a weapon for stress testing. **DO NOT** use this on targets you do not own or have explicit permission to test. The author, **dollarhunter**, takes **NO RESPONSIBILITY** for the destruction you cause. You have been warned.
 
-- **Enterprise Reporting**: Tracks detailed HTTP status codes (2xx, 3xx, 4xx, 5xx) to identify exactly how the server is failing.
-- **Test Duration Control**: Set precise test durations (e.g., `30s`, `5m`) for reproducible benchmarks.
-- **HTTP/2 Support**: Leverages HTTP/2 multiplexing for maximum throughput.
-- **Advanced IP Rotation**: Supports HTTP/SOCKS proxies to rotate IP addresses for every request.
-- **Real-time Monitoring**: Displays live Requests Per Second (RPS), Success counts, and Error counts.
+## ⚡ Capabilities
 
-## Prerequisites
+- **🔐 HTTPS Bypass**: Native TLS injection to penetrate SSL layers.
+- **🚀 Hyper-Threading**: Spawns thousands of concurrent goroutines for maximum impact.
+- **🎭 Ghost Mode**: Rotates User-Agents, Referers, and Headers to evade detection and mimic legitimate traffic.
+- **🛡️ Proxy Support**: Automatically rotates IPs from `proxies.txt` to bypass rate limits and firewalls.
+- **📊 Live Intel**: Real-time RPS (Requests Per Second) monitoring and status reports.
 
-- **Go (Golang)**: You need to have Go installed on your machine. [Download Go](https://go.dev/dl/).
+## 🛠️ Deployment
 
-## Installation
+**Prerequisites:** [Go (Golang)](https://go.dev/dl/)
 
-1.  **Clone the repository**:
+1.  **Infiltrate the Repository:**
 
     ```bash
     git clone https://github.com/Usmanbalogun044/killer.git
     cd killer
     ```
 
-2.  **Build the program**:
+2.  **Execute Payload:**
+
     ```bash
-    go build -o killer dosattack.go
+    go run killer.go -t <TARGET_IP>
     ```
 
-## Usage
+3.  **Proxy Configuration (Optional but Recommended):**
+    Create a file named `proxies.txt` in the same directory.
+    Format: `IP:Port` or `User:Pass@IP:Port`
+    ```text
+    127.0.0.1:8080
+    user:pass@1.2.3.4:3128
+    ```
+    _Killer will automatically load these and rotate your IP to evade bans._
 
-### Command Line Flags
+## 💀 Usage
 
-- `-t`: **Target URL**. The full URL of the target (e.g., `https://example.com`).
-- `-th`: **Threads**. Number of concurrent workers. Default: `100`.
-- `-d`: **Duration**. Length of the test (e.g., `30s`, `1m`, `1h`). Default: `0` (Infinite).
-- `-proxy`: **Proxy List**. Path to a file containing proxies (one per line).
-
-### Examples
-
-**1. Quick 30-Second Load Test**
-Target `https://example.com` with 100 threads for 30 seconds:
-
-```bash
-./killer -t https://example.com -th 100 -d 30s
-```
-
-**2. Sustained Enterprise Stress Test**
-Target `https://target-site.com` with 500 threads for 1 hour, using proxies:
+Launch the attack from your terminal:
 
 ```bash
-./killer -t https://target-site.com -th 500 -d 1h -proxy proxies.txt
+go run killer.go -t <TARGET> -p <PORT> -th <THREADS>
 ```
 
-## Reporting & Analysis
+### 🚩 Command Flags
 
-At the end of the test, the tool generates a **Test Completion Report**:
+| Flag  | Description                                 | Default       |
+| :---- | :------------------------------------------ | :------------ |
+| `-t`  | **Target Host** (Domain/IP). No `https://`. | `example.com` |
+| `-p`  | **Target Port**. Usually 443 for SSL.       | `443`         |
+| `-th` | **Thread Count**. The power of the swarm.   | `100`         |
 
-```text
-=================================================
-             TEST COMPLETION REPORT
-=================================================
- Target:          https://example.com
- Duration:        30.00s
- Total Requests:  15420
- Avg RPS:         514.00
--------------------------------------------------
- [2xx] Success:   15000
- [3xx] Redirects: 0
- [4xx] Client Err:420
- [5xx] Server Err:0
- [Err] Net Errors:0
-=================================================
+### 💣 Attack Scenarios
+
+**Standard Strike:**
+
+```bash
+go run killer.go -t example.com
 ```
 
-### Interpreting Results for cPanel / Shared Hosting
+**Heavy Artillery (Custom Port + 500 Threads):**
 
-If you are testing your own cPanel or shared hosting environment, look for these specific signs:
+```bash
+go run killer.go -t test-server.com -p 8443 -th 500
+```
 
-- **508 Resource Limit Is Reached**: This is a common **5xx** error on cPanel. It means your test successfully hit the CPU/RAM limits assigned to your account (CloudLinux LVE limits).
-- **503 Service Unavailable**: The web server (Apache/LiteSpeed) is overloaded or restarting.
-- **403 Forbidden**: If you see many **4xx** errors, the server's firewall (like ModSecurity or Imunify360) has likely detected the attack and blocked your IP.
+## 👨‍💻 Operator
 
-## License
-
-This project is open-source and available for educational study.
+**Code by [dollarhunter]**
+_Stay low, move fast._

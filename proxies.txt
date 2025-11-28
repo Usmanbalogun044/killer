@@ -1,0 +1,5 @@
+# HTTP/HTTPS/SOCKS5 Proxies
+# Format: IP:Port or User:Pass@IP:Port
+# Put REAL proxies here.
+# Example:
+# 1.2.3.4:8080
